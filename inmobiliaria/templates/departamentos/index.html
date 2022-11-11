@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Departamentos {% endblock %}
+
+{% block Contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crearDepartamento' %}" role="button">Agregar nuevo departamento</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Departamentos</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Actividad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for departamento in departamentos %}
+                    <tr class="">
+                        <td> {{ departamento.codigo }} </td>
+                        <td> {{ departamento.nombre }} </td>
+                        <td> {{ departamento.actividad }} </td>
+                        <td> <a name="" id="" class="btn btn-info" href="{% url 'editarDepartamento' departamento.id %}" role="button">Editar</a> 
+                            |
+                             <a name="" id="" class="btn btn-danger" href="{% url 'eliminarDepartamento' departamento.id %}" role="danger">Borrar</a>  </td>
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        Departamentos VIVENTO
+    </div>
+</div>
+
+{% endblock %}

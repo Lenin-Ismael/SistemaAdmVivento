@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Empleados {% endblock %}
+
+{% block Contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crearEmpleado' %}" role="button">Agregar nuevo empleado</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Empleado</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Identificación</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados %}
+                    <tr class="">
+                        <td> {{ empleado.identificacion }} </td>
+                        <td> {{ empleado.nombres }} </td>
+                        <td> {{ empleado.apellidos }} </td>
+                        <td> {{ empleado.cargo }} </td>
+                        <td> 
+                            <img src="{{ empleado.imagen.url }}" height=50/>
+                             
+                        </td>
+                        
+                        <td> <a name="" id="" class="btn btn-info" href="{% url 'editarEmpleado' empleado.id %}" role="button">Editar</a> 
+                            |
+                             <a name="" id="" class="btn btn-danger" href="{% url 'eliminarEmpleado' empleado.id %}" role="danger">Borrar</a>  </td>
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        Empleados VIVENTO
+    </div>
+</div>
+
+{% endblock %}
