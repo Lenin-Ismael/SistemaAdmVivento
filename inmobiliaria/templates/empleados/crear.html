@@ -3,20 +3,22 @@
 {% block titulo %} Agregar nuevo empleado {% endblock %}
 
 {% block Contenido %} 
-
+<form method="POST">
 <div class="card">
     <div class="card-header">
         Crear un empleado
     </div>
     <div class="card-body">
         <h4 class="card-title">Datos del empleado</h4>
-        {{formulario.as_p}}
+        {% csrf_token %}
+        {{ formulario.as_p }}
+<button type="submit" class="btn btn-primary">Guardar</button>
+<button type="" class="btn btn-primary">Cancelar</button>
+
     </div>
 
     <div class="card-footer text-muted">
-        <input name="" id="" class="btn btn-success" type="submit" value="Guardar Información" href="{% url 'crearEmpleado' %}">
-        <a name="" id="" class="btn btn-primary" href="{% url 'empleados' %}" role="button">Cancelar</a>
     </div>
 </div>
-
+</form>
 {% endblock %}

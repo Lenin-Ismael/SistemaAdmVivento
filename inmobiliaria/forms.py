@@ -1,6 +1,10 @@
 from django import forms
-from .models import Empleado
-from .models import Departamento
+from .models import *
+
+class CargoForm(forms.ModelForm):
+    class Meta:
+        model = Cargo
+        fields = ('__all__')
 
 class DepartamentoForm(forms.ModelForm):
     class Meta:
@@ -10,26 +14,12 @@ class DepartamentoForm(forms.ModelForm):
 class EmpleadoForm(forms.ModelForm):
     class Meta:
         model = Empleado
-        fields = [
-            'id',
-            'identificacion',
-            'nombres',
-            'apellidos',
-            'cargo',
-            'departamento',
-            'imagen',
-        ]
-        labels = {
-            'id' : 'Id',
-            'identificacion': 'Identificación',
-            'nombres': 'Nombres',
-            'apellidos': 'Apellidos',
-            'cargo': 'Cargo',
-            'departamento': 'Departamento',
-            'imagen': 'Imagen',
+        fields = ('__all__')
+        widgets= {
+            'departamento': forms.Select(attrs={'class':'form-control'})
+
         }
-        widgets={
-        }
+
      
 
 

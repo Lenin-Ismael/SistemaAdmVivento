@@ -1,10 +1,9 @@
 from pickle import NONE
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Empleado
-from .forms import EmpleadoForm
-from .models import Departamento
-from .forms import DepartamentoForm
+from .models import *
+from .forms import *
+from django.views.generic import CreateView
 
 # Create your views here.
 
@@ -33,6 +32,7 @@ def editarEmpleado(request, id):
     if formulario.is_valid() and request.POST:
         formulario.save()
         return redirect('empleados')
+    
     return render(request, 'empleados/editar.html',  {'formulario': formulario})
 
 def eliminarEmpleado(request, id):
@@ -64,3 +64,29 @@ def eliminarDepartamento(request, id):
     departamento = Departamento.objects.get(id=id)
     departamento.delete()
     return redirect('departamentos')
+
+
+def cargos(request):
+    cargos = Cargo.objects.all()
+    return render(request, 'cargos/index.html', {'cargos': cargos})
+
+def crearCargo(request):
+    formulario = CargoForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('cargos')
+    return render(request, 'cargos/crear.html', {'formulario': formulario})
+
+def editarCargo(request, id):
+    cargo = Cargo.objects.get(id=id)
+    formulario = CargoForm(request.POST or None, request.FILES or None, instance=cargo)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('cargos')
+    return render(request, 'cargos/editar.html',  {'formulario': formulario})
+
+def eliminarCargo(request, id):
+    cargo = Cargo.objects.get(id=id)
+    cargo.delete()
+    return redirect('cargos')
+

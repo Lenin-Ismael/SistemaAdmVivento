@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Cargas {% endblock %}
+
+{% block Contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-primary" href="{% url 'crearCargo' %}" role="button">Agregar nuevo cargo</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Cargos</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Actividad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cargo in cargos %}
+                    <tr class="">
+                        <td> {{ cargo.codigo }} </td>
+                        <td> {{ cargo.nombre }} </td>
+                        <td> {{ cargo.actividad }} </td>
+                        <td> <a name="" id="" class="btn btn-info" href="{% url 'editarCargo' cargo.id %}" role="button">Editar</a> 
+                            |
+                             <a name="" id="" class="btn btn-danger" href="{% url 'eliminarCargo' cargo.id %}" role="danger">Borrar</a>  </td>
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        Cargos VIVENTO
+    </div>
+</div>
+
+{% endblock %}
