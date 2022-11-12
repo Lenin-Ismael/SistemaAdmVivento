@@ -16,6 +16,7 @@ class EmpleadoForm(forms.ModelForm):
         model = Empleado
         fields = ('__all__')
         widgets= {
+            'cargo': forms.Select(attrs={'class':'form-control'}),
             'departamento': forms.Select(attrs={'class':'form-control'})
 
         }
