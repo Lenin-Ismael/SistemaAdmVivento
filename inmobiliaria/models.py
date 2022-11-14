@@ -33,8 +33,8 @@ class Empleado(models.Model):
     identificacion = models.CharField(max_length=10,verbose_name='Identificación')
     nombres = models.CharField(max_length=250,verbose_name='Nombres')
     apellidos = models.CharField(max_length=250,verbose_name='Apellidos')
-    cargo = models.ForeignKey(Cargo, verbose_name='Cargos', null=False, blank=False, on_delete=models.CASCADE)
-    departamento = models.ForeignKey(Departamento, verbose_name='Departamentos', null=False, blank=False, on_delete=models.CASCADE)
+    cargo = models.ForeignKey(Cargo, verbose_name='Cargo', null=False, blank=False, on_delete=models.CASCADE)
+    departamento = models.ForeignKey(Departamento, verbose_name='Departamento', null=False, blank=False, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='imagenes/', verbose_name='Imagen', null=False)
 
     def __str__(self):
