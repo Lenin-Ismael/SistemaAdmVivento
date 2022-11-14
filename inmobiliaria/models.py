@@ -35,7 +35,7 @@ class Empleado(models.Model):
     apellidos = models.CharField(max_length=250,verbose_name='Apellidos')
     cargo = models.ForeignKey(Cargo, verbose_name='Cargos', null=False, blank=False, on_delete=models.CASCADE)
     departamento = models.ForeignKey(Departamento, verbose_name='Departamentos', null=False, blank=False, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='imagenes/', verbose_name='Imagen', null=True)
+    imagen = models.ImageField(upload_to='imagenes/', verbose_name='Imagen', null=False)
 
     def __str__(self):
         fila = "Nombres:  " + self.nombres + " " + " - Apellidos: " + self.apellidos
