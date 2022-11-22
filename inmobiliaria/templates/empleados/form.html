@@ -1,32 +1,17 @@
 <form enctype="multipart/form-data" method="post">
   {% csrf_token %}
+  {{  formulario }}
   {% for campo in formulario %}
-    <div class="mb-3">
-      <label for="" class="form-label">{{ campo.label }}:</label>
 
       {% if campo.field.widget.input_type == 'file' and campo.value %}
       <br>
       <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" width="100" alt="">
       {% endif%}
 
-      {% if campo.field.widget.input_type == 'select' %}
-      <div class="list-group">
-        <select class="form-control">
-          <option value="departamentos"></option>
-        </select>
-      </div>
-      {% endif%}
-
-      <input 
-      type="{{ campo.field.widget.input_type }}"
-      class="form-control" 
-      name="{{ campo.name }}" 
-      id="" 
-      aria-describedby="helpId" 
-      placeholder="{{ campo.label }}"
-      value="{{ campo.value | default:'' }}">
-    </div>
+      
   {% endfor %}
+  <br>
+  <br>
 <input name="" id="" class="btn btn-success" type="submit" value="Guardar Información" href="{% url 'crearEmpleado' %}">
 <a name="" id="" class="btn btn-primary" href="{% url 'empleados' %}" role="button">Cancelar</a>
 </form>

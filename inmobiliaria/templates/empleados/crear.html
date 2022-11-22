@@ -3,22 +3,17 @@
 {% block titulo %} Agregar nuevo empleado {% endblock %}
 
 {% block Contenido %} 
-<form method="POST">
+
 <div class="card">
     <div class="card-header">
         Crear un empleado
     </div>
     <div class="card-body">
         <h4 class="card-title">Datos del empleado</h4>
-        {% csrf_token %}
-        {{ formulario.as_p }}
-<button type="submit" class="btn btn-primary">Guardar</button>
-<button type="" class="btn btn-primary">Cancelar</button>
-
+        {% include 'empleados/form.html' %}
     </div>
-
     <div class="card-footer text-muted">
     </div>
 </div>
-</form>
+
 {% endblock %}
